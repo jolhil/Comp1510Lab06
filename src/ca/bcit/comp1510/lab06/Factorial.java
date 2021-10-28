@@ -13,13 +13,8 @@ import java.util.Scanner;
  *
  */
 public class Factorial {
-
     
-    public int readInt(Scanner s) {
-        int x = s.nextInt();
-        
-        return x;
-    }
+    
     /**
      * Drives the program
      * @param args unused
@@ -28,19 +23,47 @@ public class Factorial {
         Scanner scan = new Scanner(System.in);
         
         System.out.println("Enter a non-negative integer:");
-        int x = scan.nextInt();
+        int input = readInt(scan);
         
-        while (x < 0) {
-            System.out.println("Please enter a non-negativce integer:");
-            x = scan.nextInt();
+        if (input == 0) {
+            System.out.println("The factorial value is " + 1);
         }
         
-        while (!scan.hasNextInt()) {
-            System.out.println("Please enter a number:");
-            x = scan.nextInt();
+        if (input > 0) {
+            int i = 1;
+            int fact = 1;
+            while (i <= input) {
+                fact = fact * i;
+                i++;
+            } System.out.println("The factorial value is " + fact);
         }
         
         scan.close();
     }
 
+    /**
+     * Read lines from the input until a non-negative integer entered.
+     * 
+     * @param scan as Scanner
+     * @return input as an integer.
+     * */
+    public static int readInt(Scanner scan) {
+        while (!scan.hasNextInt()) {
+            System.out.println("Please enter a number:");
+            scan.next();
+        }
+        
+        while (scan.nextInt() < 0) {
+            System.out.println("Please enter a non-negativce integer:");
+            
+            while (!scan.hasNextInt()) {
+                System.out.println("Please enter a number:");
+                scan.next();
+            }
+            
+        }
+        
+        return scan.nextInt();
+    }
+    
 }
