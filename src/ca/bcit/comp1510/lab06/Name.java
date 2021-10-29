@@ -29,10 +29,24 @@ public class Name {
      * @param last as a string.
      */
     public Name(String first, String middle, String last) {
-        firstName = first;
-        middleName = middle;
-        lastName = last;
-        
+        if (first.trim().length() == 0) {
+            firstName = "Jane";
+        } else {
+            firstName = first.substring(0, 1).toUpperCase() 
+                    + first.substring(1).toLowerCase();
+        }
+        if (middle.trim().length() == 0) {
+            middleName = "Unknown";
+        } else {
+            middleName = middle.substring(0, 1).toUpperCase()
+                    + middle.substring(1).toLowerCase();
+        }
+        if (last.trim().length() == 0) {
+            lastName = "Doe";
+        } else {
+            lastName = last.substring(0, 1).toUpperCase()
+                    + last.substring(1).toLowerCase();
+        }
     }
     
     /** 
@@ -64,9 +78,11 @@ public class Name {
      * @param newFirst as a string.
      * */
     public void setFirstName(String newFirst) {
-        newFirst = firstName.substring(0, 1).toUpperCase() 
-                + firstName.substring(1, firstName.length()).toLowerCase();
-        this.firstName = newFirst;
+        if (newFirst.trim().length() != 0) {
+            newFirst = firstName.substring(0, 1).toUpperCase() 
+                    + firstName.substring(1, firstName.length()).toLowerCase();
+            this.firstName = newFirst;
+        }
     }
     
     /**
@@ -74,9 +90,12 @@ public class Name {
      * @param newMiddle as a string.
      */
     public void setMiddleName(String newMiddle) {
-        newMiddle = middleName.substring(0, 1).toUpperCase() 
-                + middleName.substring(1, middleName.length()).toLowerCase();
-        this.middleName = newMiddle;
+        if (newMiddle.trim().length() != 0) {
+            newMiddle = middleName.substring(0, 1).toUpperCase() 
+                    + middleName.substring(1, 
+                            middleName.length()).toLowerCase();
+            this.middleName = newMiddle;
+        }
     }
     
     /**
@@ -84,9 +103,11 @@ public class Name {
      * @param newLast as a string
      */
     public void setLastName(String newLast) {
-        newLast = lastName.substring(0, 1).toUpperCase() 
-                + lastName.substring(1, lastName.length()).toLowerCase();
-        this.lastName = newLast;
+        if (newLast.trim().length() != 0) {
+            newLast = lastName.substring(0, 1).toUpperCase() 
+                    + lastName.substring(1, lastName.length()).toLowerCase();
+            this.lastName = newLast;
+        }
     }
     
     /** Returns the sum of the lengths of the three parts of the name.
@@ -114,7 +135,9 @@ public class Name {
     public String nthChar(int n) {
         String fullName = firstName + middleName + lastName;
         String nthChar = fullName.substring(n - 1, n);
-        
+        if (n > fullName.length()) {
+            return "@";
+        }
         return nthChar;
     }
     

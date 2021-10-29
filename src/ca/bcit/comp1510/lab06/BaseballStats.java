@@ -3,6 +3,7 @@ package ca.bcit.comp1510.lab06;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 /**
  * Reads baseball data in from a comma delimited file. Each line 
  * of the file contains a name followed by a list of symbols
@@ -22,9 +23,16 @@ public class BaseballStats {
      * @param args unused
      */
     public static void main(String[] args) throws FileNotFoundException {
+        double hits = 0;
+        double walks = 0;
+        double sacs = 0;
+        double outs = 0;
+        
         Scanner fileScan;
         Scanner lineScan;
         String fileName;
+        
+        DecimalFormat decimal = new DecimalFormat("0.000");
         
         Scanner scan = new Scanner(System.in);
         //TODO Read and process each line of the file
@@ -42,13 +50,28 @@ public class BaseballStats {
             lineScan.useDelimiter(",");
             
             while (lineScan.hasNext()) {
-                System.out.print(" " + lineScan.next());
+                char c = lineScan.next().charAt(0);
+                if (c == 'o') {
+                    outs++;
+                } else if (c == 'h') {
+                    hits++;
+                } else if (c == 'w') {
+                    walks++;
+                } else if (c == 's') {
+                    sacs++;
+                } else if (Character.isUpperCase(c)) {
+                    outs = 0;
+                    hits = 0;
+                    walks = 0;
+                    sacs = 0;
+                }
             }
-            System.out.println();
+            System.out.println("hits: " + (int) hits + "\nouts: " + (int) outs
+                    + "\nwalks: " + (int) walks + "\nsacrifies: " + (int) sacs);
+            System.out.println("Batting average is " 
+                    + decimal.format((hits / (hits + outs))));
         }
-            
-        
         scan.close();
     }
-        
 }
+

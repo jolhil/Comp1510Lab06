@@ -1,13 +1,10 @@
-/**
- * 
- */
 package ca.bcit.comp1510.lab06;
 
 import java.util.Scanner;
 
 /**
  * 
- * Computes the factorial of the integer
+ * Computes the factorial of the integer.
  * @author Junsang(Jason)Yoo
  * @version 2021
  *
@@ -16,7 +13,7 @@ public class Factorial {
     
     
     /**
-     * Drives the program
+     * Drives the program.
      * @param args unused
      */
     public static void main(String[] args) {
@@ -60,10 +57,10 @@ public class Factorial {
                 System.out.println("Please enter a number:");
                 scan.next();
             }
-            
         }
+        int result = scan.nextInt();
         
-        return scan.nextInt();
+        return result;
     }
     
 }
