@@ -50,16 +50,16 @@ public class BaseballStats {
             lineScan.useDelimiter(",");
             
             while (lineScan.hasNext()) {
-                char c = lineScan.next().charAt(0);
-                if (c == 'o') {
+                char code = lineScan.next().charAt(0);
+                if (code == 'o') {
                     outs++;
-                } else if (c == 'h') {
+                } else if (code == 'h') {
                     hits++;
-                } else if (c == 'w') {
+                } else if (code == 'w') {
                     walks++;
-                } else if (c == 's') {
+                } else if (code == 's') {
                     sacs++;
-                } else if (Character.isUpperCase(c)) {
+                } else if (Character.isUpperCase(code)) {
                     outs = 0;
                     hits = 0;
                     walks = 0;

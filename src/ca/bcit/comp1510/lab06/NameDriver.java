@@ -21,7 +21,8 @@ public class NameDriver {
     public static void main(String[] args) {
         
         Scanner scan = new Scanner(System.in);
-        int x;
+        int n;
+        final int exceed = 23;
         
         // Create a name that use white space and empty String for
         // its components.
@@ -39,6 +40,11 @@ public class NameDriver {
         // Test setter format
         name2.setMiddleName("Kwon");
         System.out.println(name2.toString());
+        
+        // Test getChar method with an integer that exceeds 
+        // the length of the name.
+        n = exceed;
+        System.out.println(name2.getChar(n));
         scan.close();
     }
 

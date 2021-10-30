@@ -45,6 +45,7 @@ public class Factorial {
      * @return input as an integer.
      * */
     public static int readInt(Scanner scan) {
+        int result = scan.nextInt();
         while (!scan.hasNextInt()) {
             System.out.println("Please enter a number:");
             scan.next();
@@ -58,8 +59,6 @@ public class Factorial {
                 scan.next();
             }
         }
-        int result = scan.nextInt();
-        
         return result;
     }
     

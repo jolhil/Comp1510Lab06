@@ -79,9 +79,8 @@ public class Name {
      * */
     public void setFirstName(String newFirst) {
         if (newFirst.trim().length() != 0) {
-            newFirst = firstName.substring(0, 1).toUpperCase() 
-                    + firstName.substring(1, firstName.length()).toLowerCase();
-            this.firstName = newFirst;
+            firstName = newFirst.substring(0, 1).toUpperCase() 
+                    + newFirst.substring(1, newFirst.length()).toLowerCase();
         }
     }
     
@@ -91,11 +90,11 @@ public class Name {
      */
     public void setMiddleName(String newMiddle) {
         if (newMiddle.trim().length() != 0) {
-            newMiddle = middleName.substring(0, 1).toUpperCase() 
-                    + middleName.substring(1, 
-                            middleName.length()).toLowerCase();
-            this.middleName = newMiddle;
+            middleName = newMiddle.substring(0, 1).toUpperCase() 
+                    + newMiddle.substring(1, 
+                            newMiddle.length()).toLowerCase();
         }
+        
     }
     
     /**
@@ -104,9 +103,8 @@ public class Name {
      */
     public void setLastName(String newLast) {
         if (newLast.trim().length() != 0) {
-            newLast = lastName.substring(0, 1).toUpperCase() 
-                    + lastName.substring(1, lastName.length()).toLowerCase();
-            this.lastName = newLast;
+            lastName = newLast.substring(0, 1).toUpperCase() 
+                    + newLast.substring(1, newLast.length()).toLowerCase();
         }
     }
     
@@ -132,11 +130,13 @@ public class Name {
     /** Returns the nth character in the full three part name.
      * @param n as an integer.
      * @return nthChar as a string.*/
-    public String nthChar(int n) {
+    public String getChar(int n) {
         String fullName = firstName + middleName + lastName;
-        String nthChar = fullName.substring(n - 1, n);
+        String nthChar;
         if (n > fullName.length()) {
-            return "@";
+            nthChar = "@";
+        } else {
+            nthChar = fullName.substring(n - 1, n);
         }
         return nthChar;
     }
